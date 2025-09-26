@@ -16,10 +16,10 @@ arg_group = parser.add_mutually_exclusive_group()
 col_group = parser.add_mutually_exclusive_group()
 parser.add_argument("input", help='space seperated list of 1,2 or 3 files;\n if only 1 file provided tries to autocomplete;\n if no extension provided presumes .gmd',nargs='+')
 parser.add_argument('output',nargs='?',default=settings['default_output'],help='output')
-col_group.add_argument('-d','--del_deco',help="delete all decorative objects",action="store_true")
-col_group.add_argument('-v','--deco_value',help="sets the color value of decoration (0-255), defaults to 64",default=64)
 arg_group.add_argument('-l','--layoutify',help="converts the level into a layout, implies -d",action="store_true")
 arg_group.add_argument('-s','--strict_equivalence',help="delete all decorative objects, implies -d",action="store_true")
+col_group.add_argument('-d','--del_deco',help="delete all decorative objects",action="store_true")
+col_group.add_argument('-v','--deco_value',help="sets the color value of decoration (0-255), defaults to 64",default=64)
 parser.add_argument('-b','--hitboxes',help='which levels have hitboxes, numbered 1-3, defaults to just 1',default=[1],nargs='+')
 parser.add_argument('-x','--spikes',help='which levels have spike hitboxes, numbered 1-3, defaults to just 1',default=[1],nargs='+')
 
@@ -492,4 +492,5 @@ with open(args.output,'w') as output:
         del level_props,level
         output.write(outstring)
         del outstring,objtypes,pp,ppf,ppo1,ppo2,ppo3,to_del,replacements,deco,rel2,pp1,pp2,pp3,id2,findex,i,j,color_triggers
+
 del output,three
